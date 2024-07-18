@@ -30,3 +30,5 @@ Route::post('auth/login', [AuthController::class, 'login']);
 Route::middleware('auth')->group(function () {
     //
 });
+
+Route::post('send-message', [AuthController::class, 'sendMessage']);
