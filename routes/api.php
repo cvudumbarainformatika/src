@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\v1\NotifController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +32,9 @@ Route::middleware('auth')->group(function () {
     //
 });
 
-Route::post('send-message', [AuthController::class, 'sendMessage']);
+// Route::post('send-message', [NotifController::class, 'storeNotif']);
+
+Route::middleware('org.dalam')
+->group(function () {
+    Route::post('send-message', [NotifController::class, 'storeNotif']);
+});
