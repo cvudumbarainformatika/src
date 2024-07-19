@@ -21,3 +21,7 @@ Route::get('/playground', function () {
     event(new \App\Events\PlaygroundEvent());
     return null;
 });
+Route::get('/notif', function () {
+    event(new \App\Events\NotifEvent('oooi'));
+    return null;
+});
