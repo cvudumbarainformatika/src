@@ -19,7 +19,7 @@ class NotifController extends Controller
       $notif = Notif::create($request->validated());
       if ($notif) {
         
-        event(new NotifEvent($notif));
+        event(new NotifEvent('coba'));
 
         return response()->json(
           ['status'=>'success',
