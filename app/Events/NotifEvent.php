@@ -28,11 +28,9 @@ class NotifEvent implements ShouldBroadcast
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
-    public function broadcastOn(): array
+    public function broadcastOn()
     {
-        return [
-            new Channel('public.notif.1'),
-        ];
+        return new Channel('public.notif.1');
     }
 
     public function broadcastAs(): string
