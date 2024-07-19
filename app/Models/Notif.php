@@ -10,4 +10,7 @@ class Notif extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $casts = [
+        'content' => 'array',
+    ];
 }
