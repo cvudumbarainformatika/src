@@ -37,4 +37,6 @@ Route::middleware('auth')->group(function () {
 Route::middleware('org.dalam')
 ->group(function () {
     Route::post('send-message', [NotifController::class, 'storeNotif']);
+    Route::post('get-messages-not-read', [NotifController::class, 'getNotif']);
+    Route::post('update-message-by-id', [NotifController::class, 'updateNotif']);
 });
