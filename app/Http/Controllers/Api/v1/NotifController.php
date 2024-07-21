@@ -53,7 +53,12 @@ class NotifController extends Controller
        $notif->is_read = 1;
        $notif->save();
 
-      //  event(new NotifEvent($notif));
+       $message = [
+        'id'=>$notif->id,
+        'action'=>'is_read'
+       ];
+
+       event(new NotifEvent($message));
        return new JsonResponse(['status'=>'success',
        'message' => 'Data berhasil diupdate', 'id'=> $notif->id], 200);
     }
