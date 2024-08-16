@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,5 @@ Route::get('/notif', function () {
     event(new \App\Events\NotifEvent('oooi'));
     return null;
 });
+Route::get('/auth/{provider}/redirect', [AuthController::class, 'redirectGoogle']);
+Route::get('/auth/{provider}/callback', [AuthController::class, 'callbackGoogle']);

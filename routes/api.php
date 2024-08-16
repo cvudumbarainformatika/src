@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Routes\RouteHelper;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\v1\NotifController;
 use Illuminate\Http\Request;
@@ -35,8 +36,12 @@ Route::middleware('auth')->group(function () {
 // Route::post('send-message', [NotifController::class, 'storeNotif']);
 
 Route::middleware('org.dalam')
-->group(function () {
-    Route::post('send-message', [NotifController::class, 'storeNotif']);
-    Route::post('get-messages-not-read', [NotifController::class, 'getNotif']);
-    Route::post('update-message-by-id', [NotifController::class, 'updateNotif']);
+    ->group(function () {
+        Route::post('send-message', [NotifController::class, 'storeNotif']);
+        Route::post('get-messages-not-read', [NotifController::class, 'getNotif']);
+        Route::post('update-message-by-id', [NotifController::class, 'updateNotif']);
+    });
+
+Route::prefix('v1')->group(function () {
+    RouteHelper::includeRouteFiles(__DIR__ . '/v1');
 });
