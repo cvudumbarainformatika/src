@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Cabang;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -33,6 +34,14 @@ class DatabaseSeeder extends Seeder
             'role' => 'owner',
             'level' => 2,
             'password' => bcrypt('123456')
+        ]);
+        Cabang::create([
+            'kodecabang' => 'APS0001',
+            'namacabang' => 'Apotik Setyawan Cokro',
+        ]);
+        Cabang::create([
+            'kodecabang' => 'APS0002',
+            'namacabang' => 'Apotik Setyawan Triwung',
         ]);
     }
 }

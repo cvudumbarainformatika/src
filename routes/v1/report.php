@@ -8,4 +8,5 @@ Route::group([
     'prefix' => 'report'
 ], function () {
     Route::get('/send-notif-get-report', [ReportController::class, 'sendNotifGetReport']);
+    Route::get('/get-saved-report', [ReportController::class, 'getSavedReport']);
 });

@@ -12,4 +12,9 @@ class Report extends Model
     protected $casts = [
         'laporan' => 'array',
     ];
+
+    public function cabang()
+    {
+        return $this->belongsTo(Cabang::class, 'kodecabang', 'kodecabang');
+    }
 }

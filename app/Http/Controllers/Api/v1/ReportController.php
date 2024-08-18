@@ -35,4 +35,16 @@ class ReportController extends Controller
     {
         $notif = Report::create($request->validated());
     }
+    public function getSavedReport()
+    {
+
+        $ada = Report::where('tgl', 'LIKE', '%' . request('q') . '%')
+            ->groupBy('norequest')
+            ->limit(10)
+            ->pluck('norequest');
+
+        $data = Report::with('cabang:kodecabang,namacabang')->whereIn('norequest', $ada)->get();
+
+        return new JsonResponse($data);
+    }
 }
