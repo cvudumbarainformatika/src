@@ -14,14 +14,17 @@ class ReportController extends Controller
     //
     public function sendNotifGetReport()
     {
+        $periode = request('periode');
+        $from = request('from');
+        $to = request('to');
         $message = [
             'type' => 'ambilLaporan',
             'tgl' => date('Y-m-d H:i:s'),
             'model' => date('YmdHis'),
             'content' => [
-                'from' => date('Y-m-01'),
-                'to' => date('Y-m-t'),
-                'periode' => 'bulan',
+                'from' => $from,
+                'to' => $to,
+                'periode' => $periode,
             ]
         ];
         // $message = 'coba';
@@ -29,7 +32,8 @@ class ReportController extends Controller
         // event(new NotifEvent(['message' => $message]));
         return new JsonResponse([
             'message' => 'notif dikirimkan',
-            'data' => $message
+            'data' => $message,
+            'req' => request()->all()
         ]);
     }
     public function storeReport(Request $request)
