@@ -16,6 +16,7 @@ class ReportController extends Controller
     {
         $message = [
             'type' => 'ambilLaporan',
+            'tgl' => date('Y-m-d H:i:s'),
             'model' => date('YmdHis'),
             'content' => [
                 'from' => date('Y-m-01'),
@@ -31,9 +32,10 @@ class ReportController extends Controller
             'data' => $message
         ]);
     }
-    public function storeReport(ReportRequest $request)
+    public function storeReport(Request $request)
     {
-        $notif = Report::create($request->validated());
+        // $notif = Report::create($request->validated());
+        return new JsonResponse($request->all());
     }
     public function getSavedReport()
     {
