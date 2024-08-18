@@ -11,6 +11,7 @@ class Report extends Model
     protected $guarded = ['id'];
     protected $casts = [
         'laporan' => 'array',
+        'header' => 'array',
     ];
 
     public function cabang()
