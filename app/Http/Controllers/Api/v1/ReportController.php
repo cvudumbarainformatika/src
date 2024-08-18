@@ -65,9 +65,10 @@ class ReportController extends Controller
         $ada = Report::where('tgl', 'LIKE', '%' . request('q') . '%')
             ->groupBy('norequest')
             ->limit(10)
+            ->orderBy('id', 'DESC')
             ->pluck('norequest');
 
-        $data = Report::with('cabang:kodecabang,namacabang')->whereIn('norequest', $ada)->get();
+        $data = Report::with('cabang:kodecabang,namacabang')->whereIn('norequest', $ada)->orderBy('id', 'DESC')->get();
 
         return new JsonResponse($data);
     }
