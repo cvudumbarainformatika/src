@@ -24,7 +24,7 @@ Route::get('/playground', function () {
 });
 Route::get('/notif', function () {
     event(new \App\Events\NotifEvent('oooi'));
-    return null;
+    return 'null';
 });
 Route::get('/auth/{provider}/redirect', [AuthController::class, 'redirectGoogle']);
 Route::get('/auth/{provider}/callback', [AuthController::class, 'callbackGoogle']);
