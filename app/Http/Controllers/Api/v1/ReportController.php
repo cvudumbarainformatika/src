@@ -46,6 +46,7 @@ class ReportController extends Controller
                 'norequest' => $request->norequest,
             ],
             [
+                'header' => $request->header,
                 'tgl' => $request->tgl,
                 'laporan' => $request->laporan,
             ],

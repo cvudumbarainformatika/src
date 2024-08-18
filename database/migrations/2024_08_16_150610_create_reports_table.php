@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('norequest');
             $table->dateTime('tgl');
+            $table->text('header');
             $table->string('kodecabang');
             $table->text('laporan');
             $table->timestamps();
