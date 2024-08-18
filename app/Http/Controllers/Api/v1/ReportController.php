@@ -35,7 +35,25 @@ class ReportController extends Controller
     public function storeReport(Request $request)
     {
         // $notif = Report::create($request->validated());
-        return new JsonResponse($request->all());
+        // return new JsonResponse($request->all());
+        $data = Report::updateOrCreate(
+            [
+                'kodecabang' => $request->kodecabang,
+                'norequest' => $request->norequest,
+            ],
+            [
+                'tgl' => $request->tgl,
+                'laporan' => $request->laporan,
+            ],
+        );
+        $message = [
+            'hit' => 'adaLaporan'
+        ];
+        event(new NotifEvent($message));
+        return new JsonResponse([
+            'data' => $data,
+            'message' => 'Data laporan sudah di simpan',
+        ]);
     }
     public function getSavedReport()
     {
