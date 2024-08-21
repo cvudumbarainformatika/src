@@ -28,3 +28,6 @@ Route::get('/notif', function () {
 });
 Route::get('/auth/{provider}/redirect', [AuthController::class, 'redirectGoogle']);
 Route::get('/auth/{provider}/callback', [AuthController::class, 'callbackGoogle']);
+Route::get('/autogen', function () {
+    return 'ookk';
+});
